@@ -20,7 +20,7 @@ Rather than another "To-Do" list, the example app is a "Bounty" system for video
 
 # Useful scripts
  - /pocketbase -> .pocketbase serve 
- - /middleware -> npm run start
+ - /middleware -> node server.js
  - /frontend   -> npm run dev
 
 
