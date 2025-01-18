@@ -1,3 +1,7 @@
+# wip not ready for public viewing yet 
+# just setting stuff up for future me <3 
+
+
 # Vuket
 Vueket is a simple example application built with Vue3 ( frontend ) , Node ( Middleware ), Pocketbase ( Backend ).
 
