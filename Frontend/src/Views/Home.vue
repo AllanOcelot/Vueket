@@ -1,8 +1,8 @@
 <template>
   <div class="page-container">
     <div class="hero-unit">
-      <h1>Welcome to Vuket</h1>
-      <p>Wow, what an amazing website this is. I bet you are super impressed. Admit it.</p>
+      <h1>Welcome to Video Game Bounties!</h1>
+      <p>Want to place a bounty on a player who wronged you, this is the place!</p>
     </div>
     <DisplayGames />
   </div>

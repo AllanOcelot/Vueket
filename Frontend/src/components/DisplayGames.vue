@@ -7,20 +7,12 @@
       LOADING...  SO GET OVER IT
     </div>
     <div class="games" v-else>
-      <div class="game" v-for="(item, index) in gamesData">
+      <router-link class="game" v-for="(item, index) in gamesData" :to="`/games/${item.name}`">
         <div class="bg" :style="`background-image:url(http://127.0.0.1:8090/api/files/games/${item.id}/${item.image})`"></div>
         <div class="cont">
-          <p class="title">Title</p>
-          <p class="info">
-            <span class="title">Example</span>
-            <span class="value">10,000</span>
-          </p>
-          <p class="info">
-            <span class="title">Example</span>
-            <span class="value">True</span>
-          </p>
+          <p class="title">{{item.name}}</p>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -31,8 +23,6 @@
 
   const loading: Ref<boolean> = ref(true)
   const gamesData: Ref<[{}]>  = ref([{}])
-
-
 
 
   async function fetchGames(){
@@ -69,14 +59,36 @@
     }
     .games {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 1fr 1fr 1fr;
       .game {
         display: flex;
         flex-direction: column;
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+        
+        &:nth-child(1){
+          justify-self: start;
+          padding-right: 10px;
+          margin-right: 10px;
+        }
+        &:nth-child(2){
+          justify-self: center;
+          padding: 0 10px;
+        }
+        &:nth-child(3){
+          justify-self: right;
+          padding-left: 10px;
+        }
+
+
         .bg {
           background-color: #fff;
           width: 100%;
           height: 200px;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
         }
         .cont {
           display: flex;
