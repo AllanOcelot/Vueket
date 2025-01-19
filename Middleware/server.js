@@ -1,30 +1,41 @@
 const express = require('express');
 const PocketBase = require('pocketbase/cjs');
+const cors = require('cors');
 
 
-const app = express();
 
 // Local config
 const dotenv = require('dotenv');
-dotenv.config();
+const axios  = require('axios')
 
-const pocketbasePort = process.env.PORT || 8080;
-
+// Pocketbase instance
+const pocketbasePort = process.env.PORT || 8090;
 const pb = new PocketBase('http://127.0.0.1:' + pocketbasePort );
 
-app.use(express.json()); // Middleware for parsing JSON
+// Our server is an express server
+const app = express();
+
+dotenv.config();
+app.use(express.json()); 
+app.use(cors());
+
+
 
 // Example route: Fetch all records from a collection
 app.get('/api/:collection', async (req, res) => {
+  console.log('Attempting to get collection ')
     try {
         const { collection } = req.params;
         const records = await pb.collection(collection).getFullList();
         res.status(200).json(records);
     } catch (err) {
-        console.error(err);
+        console.log('---------')
+        console.error(err)
+        console.log('---------')
         res.status(500).json({ error: 'Failed to fetch records' });
     }
 });
+
 
 // Example route: Add a new record to a collection
 app.post('/api/:collection', async (req, res) => {
@@ -39,6 +50,7 @@ app.post('/api/:collection', async (req, res) => {
     }
 });
 
+
 // Example route: Update a record in a collection
 app.put('/api/:collection/:id', async (req, res) => {
     try {
@@ -51,6 +63,7 @@ app.put('/api/:collection/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to update record' });
     }
 });
+
 
 // Example route: Delete a record from a collection
 app.delete('/api/:collection/:id', async (req, res) => {
