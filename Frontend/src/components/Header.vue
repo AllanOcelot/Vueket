@@ -4,7 +4,7 @@
 <template>
   <header>
     <div class="page-container">
-      <router-link to="/" class="logo">Vuket</router-link>
+      <router-link to="/" class="logo">Video Game Bounties</router-link>
       <nav>
         <router-link to="/games" >Games</router-link>
         <router-link to="/bounties" >Bounties</router-link>

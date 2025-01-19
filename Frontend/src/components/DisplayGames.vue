@@ -7,7 +7,7 @@
       LOADING...  SO GET OVER IT
     </div>
     <div class="games" v-else>
-      <router-link class="game" v-for="(item, index) in gamesData" :to="`/games/${item.name}`">
+      <router-link class="game" v-for="(item, index) in gamesData" :to="`/games/${item.slug}`">
         <div class="bg" :style="`background-image:url(http://127.0.0.1:8090/api/files/games/${item.id}/${item.image})`"></div>
         <div class="cont">
           <p class="title">{{item.name}}</p>
